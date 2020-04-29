@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 17:05:07 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/29 19:30:21 by hexa             ###   ########.fr       */
+/*   Updated: 2020/04/29 19:45:17 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,13 @@ Serialization::~Serialization(void) {}
 Serialization::operator Data*() const
 {
 	Data	*data = new Data;
-	char	str[9];
+	char	*input = reinterpret_cast<char*>(this->m_raw);
 	
-	bzero(str, 9);
-	memcpy(&str, this->m_raw, 8);
-	(*data).s1 = str;
-	memcpy(&((*data).n), (char*)(this->m_raw) + (int)8, 4);
-	memcpy(&str, (char*)(this->m_raw) + (int)12, 8);
-	(*data).s2 = str;
+	for (int i = 0;i < 8;i++)
+		(*data).s1 += input[i];
+	memcpy(&((*data).n), &input[8], 4);
+	for (int i = 0;i < 8;i++)
+		(*data).s2 += input[i + 12];
 	return (data);
 }
 
