@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:46:54 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/29 16:31:38 by hexa             ###   ########.fr       */
+/*   Updated: 2020/04/29 16:47:31 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ Conversion::operator char() const
 
 	try
 	{
-		nb = stoi(*(this->m_str));
+		nb = std::stoi(*(this->m_str));
 	}
 	catch (std::exception& e)
 	{
@@ -66,7 +66,7 @@ Conversion::operator int() const
 
 	try
 	{
-		nb = stoi(*(this->m_str));
+		nb = std::stoi(*(this->m_str));
 	}
 	catch (std::exception& e)
 	{
@@ -81,7 +81,7 @@ Conversion::operator float() const
 
 	try
 	{
-		nb = stof(*(this->m_str));
+		nb = std::stof(*(this->m_str));
 	}
 	catch (std::exception& e)
 	{
@@ -96,7 +96,7 @@ Conversion::operator double() const
 
 	try
 	{
-		nb = stod(*(this->m_str));
+		nb = std::stod(*(this->m_str));
 	}
 	catch (std::exception& e)
 	{
