@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:35:14 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/29 16:29:23 by hexa             ###   ########.fr       */
+/*   Updated: 2020/04/29 17:16:39 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class	Conversion
 {
 	private:
-		std::string*	m_str;
+		std::string	m_str;
 	
 	public:
 		Conversion(void);

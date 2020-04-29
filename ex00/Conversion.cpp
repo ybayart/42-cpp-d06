@@ -6,20 +6,17 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:46:54 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/29 16:47:31 by hexa             ###   ########.fr       */
+/*   Updated: 2020/04/29 17:17:12 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Conversion.hpp"
 
-Conversion::Conversion(void)
-{
-	this->m_str = NULL;
-}
+Conversion::Conversion(void) {}
 
 Conversion::Conversion(std::string str)
 {
-	this->m_str = &str;
+	this->m_str = str;
 }
 
 Conversion::Conversion(const Conversion& src)
@@ -42,7 +39,7 @@ Conversion::~Conversion(void) {}
 void
 Conversion::setStr(std::string str)
 {
-	this->m_str = &str;
+	this->m_str = str;
 }
 
 Conversion::operator char() const
@@ -51,7 +48,7 @@ Conversion::operator char() const
 
 	try
 	{
-		nb = std::stoi(*(this->m_str));
+		nb = std::stoi(this->m_str);
 	}
 	catch (std::exception& e)
 	{
@@ -66,7 +63,7 @@ Conversion::operator int() const
 
 	try
 	{
-		nb = std::stoi(*(this->m_str));
+		nb = std::stoi(this->m_str);
 	}
 	catch (std::exception& e)
 	{
@@ -81,7 +78,7 @@ Conversion::operator float() const
 
 	try
 	{
-		nb = std::stof(*(this->m_str));
+		nb = std::stof(this->m_str);
 	}
 	catch (std::exception& e)
 	{
@@ -96,7 +93,7 @@ Conversion::operator double() const
 
 	try
 	{
-		nb = std::stod(*(this->m_str));
+		nb = std::stod(this->m_str);
 	}
 	catch (std::exception& e)
 	{
