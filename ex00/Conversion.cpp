@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:46:54 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/30 15:56:15 by hexa             ###   ########.fr       */
+/*   Updated: 2020/04/30 17:41:29 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ Conversion::operator double() const
 	{
 		throw (Conversion::ConversionErrorException());
 	}
+	std::cout << std::setprecision(this->m_getPrecision()) << std::fixed;
 	return (nb);
 }
 
