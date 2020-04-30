@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:35:14 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/29 17:16:39 by hexa             ###   ########.fr       */
+/*   Updated: 2020/04/30 16:03:39 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 # define CONVERSION_HPP
 
 # include <iostream>
-# include <sstream>
+# include <iomanip>
+# include <cstdlib>
 
 class	Conversion
 {
 	private:
 		std::string	m_str;
+		int			m_getPrecision(void) const;
 	
 	public:
 		Conversion(void);

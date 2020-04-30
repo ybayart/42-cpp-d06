@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:46:54 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/29 17:17:12 by hexa             ###   ########.fr       */
+/*   Updated: 2020/04/30 15:56:15 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,22 @@ void
 Conversion::setStr(std::string str)
 {
 	this->m_str = str;
+}
+
+int
+Conversion::m_getPrecision(void) const
+{
+	unsigned int	before;
+	unsigned int	after;
+
+	before = 0;
+	while (this->m_str[before] && this->m_str[before] != '.')
+		before += 1;
+	after = before + 1;
+	while (this->m_str[after] && isdigit(this->m_str[after]))
+		after += 1;
+	after -= before;
+	return ((this->m_str.size() == before || after == 1) ? 1 : after - 1);
 }
 
 Conversion::operator char() const
@@ -84,6 +100,7 @@ Conversion::operator float() const
 	{
 		throw (Conversion::ConversionErrorException());
 	}
+	std::cout << std::setprecision(this->m_getPrecision()) << std::fixed;
 	return (nb);
 }
 
@@ -111,7 +128,7 @@ Conversion::ConversionErrorException::ConversionErrorException(void) {}
 Conversion::
 ConversionErrorException::ConversionErrorException(const ConversionErrorException& src)
 {
-    *this = src;
+	*this = src;
 }
 
 Conversion::ConversionErrorException::~ConversionErrorException(void) throw() {}
@@ -119,13 +136,13 @@ Conversion::ConversionErrorException::~ConversionErrorException(void) throw() {}
 Conversion::ConversionErrorException&
 Conversion::ConversionErrorException::operator=	(const ConversionErrorException& rhs)
 {
-    static_cast <void> (rhs);
-    return (*this);
+	static_cast <void> (rhs);
+	return (*this);
 }
 
 const char*
 Conversion::ConversionErrorException::what() const throw()
 {
-    return ("impossible");
+	return ("impossible");
 }
 
