@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:35:14 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/30 16:03:39 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/06 03:48:38 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <iomanip>
 # include <cstdlib>
+# include <climits>
 
 class	Conversion
 {
@@ -33,10 +34,10 @@ class	Conversion
 
 		void	setStr(std::string);
 
-		explicit operator char() const;
-		explicit operator int() const;
-		explicit operator float() const;
-		explicit operator double() const;
+		operator char() const;
+		operator int() const;
+		operator float() const;
+		operator double() const;
 
 		class ConversionErrorException : public std::exception
 		{

@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 14:46:54 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/30 17:41:29 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/06 03:51:45 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,15 @@ Conversion::m_getPrecision(void) const
 Conversion::operator char() const
 {
 	int		nb;
+	long	tmp;
+	char*	end;
 
 	try
 	{
-		nb = std::stoi(this->m_str);
+		tmp = std::strtod(this->m_str.c_str(), &end);
+		nb = tmp;
+		if (tmp < INT_MIN || tmp > INT_MAX)
+			throw std::exception();
 	}
 	catch (std::exception& e)
 	{
@@ -76,10 +81,15 @@ Conversion::operator char() const
 Conversion::operator int() const
 {
 	int		nb;
+	long	tmp;
+	char*	end;
 
 	try
 	{
-		nb = std::stoi(this->m_str);
+		tmp = std::strtod(this->m_str.c_str(), &end);
+		nb = tmp;
+		if (tmp < INT_MIN || tmp > INT_MAX)
+			throw std::exception();
 	}
 	catch (std::exception& e)
 	{
@@ -91,10 +101,11 @@ Conversion::operator int() const
 Conversion::operator float() const
 {
 	float	nb;
+	char*	end;
 
 	try
 	{
-		nb = std::stof(this->m_str);
+		nb = std::strtod(this->m_str.c_str(), &end);
 	}
 	catch (std::exception& e)
 	{
@@ -107,10 +118,11 @@ Conversion::operator float() const
 Conversion::operator double() const
 {
 	double	nb;
+	char*	end;
 
 	try
 	{
-		nb = std::stod(this->m_str);
+		nb = std::strtod(this->m_str.c_str(), &end);
 	}
 	catch (std::exception& e)
 	{

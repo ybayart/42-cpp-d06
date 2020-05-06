@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 17:03:15 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/29 19:00:37 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/06 03:54:38 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <string.h>
+# include <cstdlib>
 
 struct	Data
 {
@@ -40,7 +41,7 @@ class	Serialization
 
 		~Serialization(void);
 
-		explicit operator Data*() const;
+		operator Data*() const;
 };
 
 #endif

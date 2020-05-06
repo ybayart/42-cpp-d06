@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 17:05:07 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/29 19:45:17 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/05 19:33:43 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Serialization::operator Data*() const
 	
 	for (int i = 0;i < 8;i++)
 		(*data).s1 += input[i];
-	memcpy(&((*data).n), &input[8], 4);
+	(*data).n = *reinterpret_cast<int*>(input + 8);
 	for (int i = 0;i < 8;i++)
 		(*data).s2 += input[i + 12];
 	return (data);
@@ -55,9 +55,10 @@ serialize(void)
 	for (int i = 0;i < 8;i++)
 		str[i] = alpha[rand() % 62];
 	n = rand() % 4294967296 - 2147483647;
-	memcpy(&str[8], &n, 4);
+	*reinterpret_cast<int*>(str + 8) = n;
 	for (int i = 0;i < 8;i++)
 		str[i + 12] = alpha[rand() % 62];
+
 	std::cout << "Serialize:" << std::endl;
 	std::cout << " - ";
 	for (int i = 0;i < 8;i++)
